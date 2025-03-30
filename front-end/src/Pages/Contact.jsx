@@ -13,7 +13,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:5000/api/contact', formData);
+        const response = await axios.post('http://localhost:3000/api/contact', formData);
         
         // Set message with green color for success
         setResponseMessage(
