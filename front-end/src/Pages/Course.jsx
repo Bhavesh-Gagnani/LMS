@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
-assets
+import { useEffect } from "react";
 
 const courses = [
   {
@@ -123,7 +123,12 @@ const courses = [
 ];
 
 const Course = () => {
+  
   const [selectedVideo, setSelectedVideo] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0});
+  }, []);
 
   return (
     <div className='flex flex-col items-center justify-center md:pb-16 pb-12 pt-6'  style={{ backgroundImage: `url(${assets.BG_Course})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
