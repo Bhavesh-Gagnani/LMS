@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { assets } from '../assets/assets'
 
+
 const About = () => {
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0});
+  }, []);
+
   return (
     <div className='flex flex-col items-center justify-center md:pb-24 pb-16 pt-6'  style={{ backgroundImage: `url(${assets.BG_About})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <h1 className='md:text-4xl text-3xl text-blue-700 font-extrabold underline md:underline-offset-10 underline-offset-6 md:mb-12 mb-6'>About Us</h1>
