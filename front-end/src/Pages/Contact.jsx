@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { assets } from '../assets/assets';
+import { useEffect } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -10,10 +11,14 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0});
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('https://lms-six-silk.vercel.app/api/contact', formData);
+        const response = await axios.post('http://localhost:5000/api/contact', formData);
         
         // Set message with green color for success
         setResponseMessage(
