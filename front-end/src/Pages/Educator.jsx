@@ -1,7 +1,12 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { useEffect } from 'react';
 
 const Educator = () => {
+
+    useEffect(() => {
+      window.scrollTo({ top: 0});
+    }, []);
 
     const profiles = [
         { name: "James Smith", title: "Data Scientist @ Google", img: "https://randomuser.me/api/portraits/men/1.jpg" },
@@ -17,7 +22,7 @@ const Educator = () => {
     ];
 
     const ProfileCard = ({ name, title, img }) => (
-        <div className="w-sm bg-white  shadow-lg rounded-lg p-4 flex items-center hover:scale-105 hover:transition duration-300 space-x-4" >
+        <div className="w-sm bg-stone-50  shadow-lg rounded-lg p-4 flex items-center hover:scale-105 hover:transition duration-300 space-x-4" >
           <img
             src={img}
             alt={name}
