@@ -1,30 +1,28 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from './Pages/Home'
-import Course from './Pages/Course'
-import Educator from './Pages/Educator'
-import About from './Pages/About'
-import Contact from './Pages/Contact'
-import Navbar from './Components/Navbar'
-import Footer from './Components/Footer'
+import React, { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Components/Layout';
+import Loader from './Components/Loader';
 
+const Home = lazy(() => import('./Pages/Home/Home'));
+const Course = lazy(() => import('./Pages/Course/Course'));
+const Educator = lazy(() => import('./Pages/Educator/Educator'));
+const About = lazy(() => import('./Pages/About/About'));
+const Contact = lazy(() => import('./Pages/Contact/Contact'));
 
 const App = () => {
-  
-
   return (
-    <div>
-      <Navbar />
+    <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path='/' element = {<Home />}/>
-        <Route path='/course' element = {<Course />}/>
-        <Route path='/educator' element = {<Educator />}/>
-        <Route path='/about' element = {<About />}/>
-        <Route path='/contact' element = {<Contact />}/>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="course" element={<Course />} />
+          <Route path="educator" element={<Educator />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
       </Routes>
-      <Footer />
-    </div>
-  )
-}
+    </Suspense>
+  );
+};
 
-export default App
+export default App;
